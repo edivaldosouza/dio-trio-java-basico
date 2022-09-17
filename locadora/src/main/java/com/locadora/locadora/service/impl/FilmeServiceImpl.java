@@ -1,6 +1,9 @@
 package com.locadora.locadora.service.impl;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,8 +41,17 @@ public class FilmeServiceImpl implements IFilmeService{
 		
 		return repository.findAll();
 	}
+
 	
-	
-	
+	 @Transactional
+    public void delete(Filme filme) {
+		 repository.delete(filme);
+    }
+
+	 
+	 public Optional<Filme> findById(Long id) {
+	        return repository.findById(id);
+	    }
+	 
 
 }
